@@ -1,0 +1,14 @@
+{
+    "name": "discord-components",
+    "version": "1.0.0",
+    "description": "Helpers for discord components",
+    "main": "dist/index.js",
+    "license": "MIT",
+    "scripts": {
+        "build": "tsc",
+        "build:watch": "tsc --watch"
+    },
+    "dependencies": {
+        "typescript": "^4.6.2"
+    }
+}
