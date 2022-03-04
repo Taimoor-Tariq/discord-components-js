@@ -3,5 +3,7 @@
 node_modules
 dist
 
+package-lock.json
+
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]

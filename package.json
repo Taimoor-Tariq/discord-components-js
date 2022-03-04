@@ -10,5 +10,24 @@
     },
     "dependencies": {
         "typescript": "^4.6.2"
-    }
+    },
+    "repository": {
+    "type": "git",
+        "url": "https://github.com/Taimoor-Tariq/discord-components-js.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Taimoor-Tariq/discord-components-js/issues"
+    },
+    "homepage": "https://github.com/Taimoor-Tariq/discord-components-js",
+    "files": [
+        "dist/**/*"
+    ],
+    "prepare": "yarn run build",
+    "types": "dist/index.d.ts",
+    "keywords": [
+        "discord",
+        "discord components",
+        "discord.js",
+        "discord.js components"
+    ]
 }
