@@ -1,12 +1,15 @@
 {
     "name": "discord-interaction-components",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "description": "Discord interaction component generator.",
     "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
         "build": "tsc",
-        "build:watch": "tsc --watch"
+        "build:watch": "tsc --watch",
+        "publish:npm": "node ./scripts/publish-npm.js && npm publish",
+        "publish:github": "node ./scripts/publish-github.js && npm publish",
+        "publish:all": "npm run publish:github && npm run publish:npm"
     },
     "devDependencies": {
         "typescript": "^4.6.2"
