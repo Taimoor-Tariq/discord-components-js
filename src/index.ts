@@ -1,92 +1,118 @@
-import * as Types from './types';
+import * as Types from './deps';
 
-enum ComponentTypes {
-    ActionRow = 1,
-    Button,
-    SelectMenu,
-    TextInput,
-}
+class Modal {
+    components: Array<Types.ActionRow>;
 
-enum TextInputStyle {
-    Short = 1,
-    Paragraph,
-}
-
-enum ButtonStyle {
-    Primary = 1,
-    Secondary,
-    Success,
-    Danger,
-    Link,
-
-    Blurple = 1,
-    Grey,
-    Green,
-    Red,
-}
-
-const ActionRow = ({components}: Types.ActionRow) => {
-    return {
-        type: ComponentTypes.ActionRow,
-        components,
+    constructor(public title: string, public custom_id: string) { 
+        this.title = title;
+        this.custom_id = custom_id;
+        this.components = [];
     }
-};
 
-const Button = ({ style, label, custom_id, emoji, url, disabled }: Types.Button) => {
-    return {
-        type: ComponentTypes.Button,
-        style,
-        label,
-        custom_id,
-        emoji,
-        url,
-        disabled,
+    addShortInput({label, custom_id, required, min_length, max_length, placeholder, value}: Types.TextInputGenerator) {
+        this.components.push({
+            type: Types.ComponentTypes.ActionRow,
+            components: [
+                {
+                    type: Types.ComponentTypes.TextInput,
+                    label,
+                    style: Types.TextInputStyle.Short,
+                    custom_id,
+                    required: required || false,
+                    min_length: min_length || 0,
+                    max_length: max_length || 4000,
+                    placeholder: placeholder || '',
+                    value: value || '',
+                }
+            ]
+        });
+
+        return this;
     }
-}
 
-const SelectMenu = ({ custom_id, options, placeholder, min_values, max_values, disabled }: Types.SelectMenu) => {
-    return {
-        type: ComponentTypes.SelectMenu,
-        custom_id,
-        options,
-        placeholder,
-        min_values,
-        max_values,
-        disabled,
+    addLongInput({label, custom_id, required, min_length, max_length, placeholder, value}: Types.TextInputGenerator) {
+        let component:Types.TextInput = {
+            type: Types.ComponentTypes.TextInput,
+            label,
+            style: Types.TextInputStyle.Paragraph,
+            custom_id,
+        };
+
+        if (required) component.required = required;
+        if (min_length) component.min_length = min_length;
+        if (max_length) component.max_length = max_length;
+        if (placeholder) component.placeholder = placeholder;
+        if (value) component.value = value;
+
+        this.components.push({
+            type: Types.ComponentTypes.ActionRow,
+            components: [ component ]
+        });
+
+        return this;
     }
 }
 
-const SelectMenuOption = ({ label, value, description, emoji, selected }: Types.SelectMenuOption) => {
-    return {
-        label,
-        value,
-        description,
-        emoji,
-        default: selected,
+class ButtonGroup {
+    components: Array<Types.Button>;
+    type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
+
+    constructor() {
+        this.components = [];
+    }
+
+    addButton({style, label, custom_id, disabled, emoji, url}: Types.ButtonGenerator) {
+        let button:Types.Button = {
+            type: Types.ComponentTypes.Button,
+            style: Types.ButtonStyle[style] || Types.ButtonStyle.Primary,
+            label,
+        }
+
+        if (custom_id) button.custom_id = custom_id;
+        if (disabled) button.disabled = disabled;
+        if (emoji) button.emoji = emoji;
+        if (url) button.url = url;
+
+        this.components.push(button);
+
+        return this;
     }
 }
 
-const TextInput = ({ label, style, custom_id, required, min_length, max_length, placeholder, value }: Types.TextInput) => {
-    return {
-        type: ComponentTypes.TextInput,
-        label,
-        style,
-        custom_id,
-        required,
-        min_length,
-        max_length,
-        placeholder,
-        value,
+class SelectMenu {
+    components: Array<Types.SelectMenu>;
+    type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
+
+    constructor({custom_id, placeholder, min_values, max_values, disabled}: Types.SelectMenuGenerator) {
+        let selectMenu:Types.SelectMenu = {
+            type: Types.ComponentTypes.SelectMenu,
+            custom_id,
+            options: [],
+        }
+
+        if (placeholder) selectMenu.placeholder = placeholder;
+        if (min_values) selectMenu.min_values = min_values;
+        if (max_values) selectMenu.max_values = max_values;
+        if (disabled) selectMenu.disabled = disabled;
+
+        this.components = [ selectMenu ];
     }
-};
 
-const Modal = ({ title, custom_id, components }: Types.Modal) => {
-    return {
-        title,
-        custom_id,
-        components,
+    addOption({label, value, description, emoji, default: isDefault}: Types.SelectMenuOption) {
+        let option:Types.SelectMenuOption = {
+            label,
+            value,
+        };
+
+        if (description) option.description = description;
+        if (emoji) option.emoji = emoji;
+        if (isDefault) option.default = isDefault;
+
+        this.components[0].options.push(option);
+
+        return this;
     }
-};
+}
 
 
-export { ActionRow, Button, SelectMenu, SelectMenuOption, TextInput, Modal, ButtonStyle, TextInputStyle };
+export { Modal, ButtonGroup, SelectMenu };

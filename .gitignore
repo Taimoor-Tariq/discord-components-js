@@ -2,7 +2,6 @@
 .vscode
 .npmrc
 node_modules
-dist
 
 package-lock.json
 package-npm.json
