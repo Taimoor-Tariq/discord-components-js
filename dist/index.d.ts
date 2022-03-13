@@ -1,14 +1,14 @@
 import * as Types from './deps';
 declare class Modal {
+    components: Array<Types.ActionRow>;
     title: string;
     custom_id: string;
-    components: Array<Types.ActionRow>;
     /**
      * **Creates a new modal.**
      * @param title - The title of the modal.
      * @param custom_id - The custom id of the modal.
      */
-    constructor(title: string, custom_id: string);
+    constructor({ title, custom_id }: Types.ModalGenerator);
     /**
      * **Adds a short input field to the modal.**
      * @param label - The label of the input.

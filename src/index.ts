@@ -2,13 +2,15 @@ import * as Types from './deps';
 
 class Modal {
     components: Array<Types.ActionRow>;
+    title: string;
+    custom_id: string;
 
     /**
      * **Creates a new modal.**
      * @param title - The title of the modal.
      * @param custom_id - The custom id of the modal.
      */
-    constructor(public title: string, public custom_id: string) { 
+    constructor({title, custom_id}: Types.ModalGenerator) { 
         this.title = title;
         this.custom_id = custom_id;
         this.components = [];

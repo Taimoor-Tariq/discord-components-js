@@ -31,9 +31,7 @@ class Modal {
      * @param title - The title of the modal.
      * @param custom_id - The custom id of the modal.
      */
-    constructor(title, custom_id) {
-        this.title = title;
-        this.custom_id = custom_id;
+    constructor({ title, custom_id }) {
         this.title = title;
         this.custom_id = custom_id;
         this.components = [];

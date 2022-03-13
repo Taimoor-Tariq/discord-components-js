@@ -76,9 +76,12 @@ interface SelectMenu extends SelectMenuGenerator {
 }
 
 
-interface Modal {
+interface ModalGenerator {
     title: string;
     custom_id: string;
+}
+
+interface Modal extends ModalGenerator {
     components: Array<ActionRow>;
 }
 
@@ -97,4 +100,4 @@ interface TextInput extends TextInputGenerator {
     style: TextInputStyle;
 }
 
-export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, TextInputGenerator, SelectMenuGenerator, SelectMenuOptionGenerator, ComponentTypes, TextInputStyle, ButtonStyle };
+export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, ModalGenerator, TextInputGenerator, SelectMenuGenerator, SelectMenuOptionGenerator, ComponentTypes, TextInputStyle, ButtonStyle };
