@@ -1,7 +1,7 @@
 {
     "name": "discord-interaction-components",
     "version": "1.1.1",
-    "description": "Helpers for discord components",
+    "description": "Discord interaction component generator.",
     "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
