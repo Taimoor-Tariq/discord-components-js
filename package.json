@@ -1,7 +1,7 @@
 {
-    "name": "@Taimoor-Tariq/discord-interaction-components",
+    "name": "discord-interaction-components",
     "version": "1.1.0",
-    "description": "Discord Interaction Components generator",
+    "description": "Helpers for discord components",
     "main": "dist/index.js",
     "license": "MIT",
     "scripts": {
@@ -12,7 +12,7 @@
         "typescript": "^4.6.2"
     },
     "repository": {
-        "url": "git://github.com/Taimoor-Tariq/discord-interaction-components.git"
+        "url": "https://github.com/Taimoor-Tariq/discord-interaction-components.git"
     },
     "bugs": {
         "url": "https://github.com/Taimoor-Tariq/discord-interaction-components/issues"
@@ -22,9 +22,6 @@
         "dist/**/*"
     ],
     "prepare": "yarn run build",
-    "publishConfig": {
-        "registry":"https://npm.pkg.github.com"
-    },
     "types": "dist/index.d.ts",
     "keywords": [
         "discord",
