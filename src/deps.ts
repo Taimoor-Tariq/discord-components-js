@@ -50,11 +50,15 @@ interface Button extends Omit<ButtonGenerator, 'style'> {
 }
 
 
-interface SelectMenuOption {
+interface SelectMenuOptionGenerator {
     label: string;
     value: string;
     description?: string;
     emoji?: Emoji;
+    selected?: boolean;
+}
+
+interface SelectMenuOption extends Omit<SelectMenuOptionGenerator, 'selected'> {
     default?: boolean;
 }
 
@@ -79,7 +83,7 @@ interface Modal {
 }
 
 interface TextInputGenerator {
-    label: string;
+    label: string; 
     custom_id: string;
     required?: boolean;
     min_length?: number;
@@ -93,4 +97,4 @@ interface TextInput extends TextInputGenerator {
     style: TextInputStyle;
 }
 
-export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, TextInputGenerator, SelectMenuGenerator, ComponentTypes, TextInputStyle, ButtonStyle };
+export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, TextInputGenerator, SelectMenuGenerator, SelectMenuOptionGenerator, ComponentTypes, TextInputStyle, ButtonStyle };

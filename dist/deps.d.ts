@@ -40,11 +40,14 @@ interface Button extends Omit<ButtonGenerator, 'style'> {
     type: ComponentTypes.Button;
     style: ButtonStyle;
 }
-interface SelectMenuOption {
+interface SelectMenuOptionGenerator {
     label: string;
     value: string;
     description?: string;
     emoji?: Emoji;
+    selected?: boolean;
+}
+interface SelectMenuOption extends Omit<SelectMenuOptionGenerator, 'selected'> {
     default?: boolean;
 }
 interface SelectMenuGenerator {
@@ -76,4 +79,4 @@ interface TextInput extends TextInputGenerator {
     type: ComponentTypes.TextInput;
     style: TextInputStyle;
 }
-export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, TextInputGenerator, SelectMenuGenerator, ComponentTypes, TextInputStyle, ButtonStyle };
+export { ActionRow, Modal, Button, SelectMenu, SelectMenuOption, TextInput, ButtonGenerator, TextInputGenerator, SelectMenuGenerator, SelectMenuOptionGenerator, ComponentTypes, TextInputStyle, ButtonStyle };
