@@ -1,9 +1,9 @@
 import * as Types from './deps';
 
 class Modal {
-    components: Array<Types.ActionRow>;
-    title: string;
-    custom_id: string;
+    private components: Array<Types.ActionRow>;
+    private title: string;
+    private custom_id: string;
 
     /**
      * **Creates a new modal.**
@@ -64,9 +64,9 @@ class Modal {
             label,
             style: Types.TextInputStyle.Paragraph,
             custom_id,
+            required: required || false,
         };
 
-        if (required) component.required = required;
         if (min_length) component.min_length = min_length;
         if (max_length) component.max_length = max_length;
         if (placeholder) component.placeholder = placeholder;
@@ -82,8 +82,8 @@ class Modal {
 }
 
 class ButtonGroup {
-    components: Array<Types.Button>;
-    type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
+    private components: Array<Types.Button>;
+    private type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
 
     /**
      * **Creates a new button group.**
@@ -120,8 +120,8 @@ class ButtonGroup {
 }
 
 class SelectMenu {
-    components: Array<Types.SelectMenu>;
-    type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
+    private components: Array<Types.SelectMenu>;
+    private type: Types.ComponentTypes = Types.ComponentTypes.ActionRow;
 
     /**
      * **Creates a new select menu.** - *(Can have upto 25 options)*

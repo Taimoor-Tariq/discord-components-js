@@ -85,9 +85,8 @@ class Modal {
             label,
             style: Types.TextInputStyle.Paragraph,
             custom_id,
+            required: required || false,
         };
-        if (required)
-            component.required = required;
         if (min_length)
             component.min_length = min_length;
         if (max_length)

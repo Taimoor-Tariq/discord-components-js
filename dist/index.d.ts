@@ -1,8 +1,8 @@
 import * as Types from './deps';
 declare class Modal {
-    components: Array<Types.ActionRow>;
-    title: string;
-    custom_id: string;
+    private components;
+    private title;
+    private custom_id;
     /**
      * **Creates a new modal.**
      * @param title - The title of the modal.
@@ -33,8 +33,8 @@ declare class Modal {
     addLongInput({ label, custom_id, required, min_length, max_length, placeholder, value }: Types.TextInputGenerator): this;
 }
 declare class ButtonGroup {
-    components: Array<Types.Button>;
-    type: Types.ComponentTypes;
+    private components;
+    private type;
     /**
      * **Creates a new button group.**
      */
@@ -51,8 +51,8 @@ declare class ButtonGroup {
     addButton({ label, custom_id, style, disabled, emoji, url }: Types.ButtonGenerator): this;
 }
 declare class SelectMenu {
-    components: Array<Types.SelectMenu>;
-    type: Types.ComponentTypes;
+    private components;
+    private type;
     /**
      * **Creates a new select menu.** - *(Can have upto 25 options)*
      * @param custom_id - The custom id of the select menu.
